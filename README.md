@@ -1,4 +1,4 @@
-# JavaScript Console Lab
+# JavaScript Fundamental Lab
 
 ## Overview
 JavaScript (JS) is the programming language of the web. It makes websites dynamic and interactive. Almost every modern website uses JS to add behavior and functionality.

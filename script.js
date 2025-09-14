@@ -1,22 +1,15 @@
-// ==========================
-// TODO-2: Connect JS file
-// ==========================
-// Link the js file with index.html file.
-// make a script tag inside the head tag of the index.html file.
-//<script src="ADD_JS_FILE_PATH_HERE" defer></script>
-
 console.log("%cJS Lab Connected — Start completing the TODOs!", "font-weight:bold; font-size:14px");
 
 // ==========================
-// TODO-3: SYNTAX & VARIABLES
+// TODO-2: SYNTAX & VARIABLES
 // ==========================
 
-// Task 3.1 — declare & reassign
+// Task 2.1 — declare & reassign
 // Create let course = "CIS101"; display it usinng console.log(course), reassign to "CIS102"; display it again.
 // write code here
 
 
-// Task 3.2 — const safety
+// Task 2.2 — const safety
 // Create const SCHOOL = "MyCollege"; then TRY to reassign it and observe the Console error. Add a comment explaining    why  reassignment fails.
 // NOTE: For now, keep the reassignment line commented so the file runs without errors.
 // const SCHOOL = "MyCollege";
@@ -24,15 +17,15 @@ console.log("%cJS Lab Connected — Start completing the TODOs!", "font-weight:b
 
 
 // ==========================
-// TODO-4 ARITHMETIC & TYPES
+// TODO-3 ARITHMETIC & TYPES
 // ==========================
 
-// Task 4.1 — arithmetic basics
+// Task 3.1 — arithmetic basics
 // Given let x = 8, y = 3; log x+y, x-y, x*y, x/y, x%y.
 // write code here
 
 
-// Task 4.2 — number vs string
+// Task 3.2 — number vs string
 // Display results of "2" + 3, 2 + "3", and 2 + 3. Add a short comment: why do the first two concatenate?
 // write code here
 
@@ -42,10 +35,10 @@ console.log("%cJS Lab Connected — Start completing the TODOs!", "font-weight:b
 
 
 // ==========================
-// TODO-5: CONDITIONALS (CORE)
+// TODO-4: CONDITIONALS (CORE)
 // ==========================
 
-// Task 5.1 — else-if ladder
+// Task 4.1 — else-if ladder
 // Write a program that checks a user's age (take age input from user).
 //       Use if–else if–else statements to categorize and log:
 //         - "Child" if age < 13
@@ -54,7 +47,7 @@ console.log("%cJS Lab Connected — Start completing the TODOs!", "font-weight:b
 // write code here
 
 
-// Task 5.2 — Switch statement
+// Task 4.2 — Switch statement
 // Create a variable let day = "Mon".
 //       Use a switch statement to check the value of day.
 //         - If it is "Mon", "Tue", "Wed", "Thu", or "Fri", log "weekday".
@@ -65,15 +58,15 @@ console.log("%cJS Lab Connected — Start completing the TODOs!", "font-weight:b
 // Read Chapter 4 in zyBooks: Conditional (ternary) operator
 
 // ===============
-// TODO-6: LOOPS
+// TODO-5: LOOPS
 // ===============
 
-// Task 6.1 — for loop sum
+// Task 5.1 — for loop sum
 // TODO: Sum integers 1..10 with a for loop; display the result of total sum.
 // write code here
 
 
-// Task 6.2 — while loop
+// Task 5.2 — while loop
 // let t = 3; while(t > 0), decrement the value t variable in each iteration and display the result.
 // write code here
 
@@ -83,15 +76,15 @@ console.log("%cJS Lab Connected — Start completing the TODOs!", "font-weight:b
 
 
 // =============================
-// TODO-7: FUNCTIONS (DECL, RETURN, ARROW)
+// TODO-6: FUNCTIONS (DECL, RETURN, ARROW)
 // =============================
 
-// Task 7.1 — pure function + return
+// Task 6.1 — pure function + return
 // Make a function add(a,b){ return a+b; } display the result of add(2,5).
 // write code here
 
 
-// Task 7.2 — Arrow functions
+// Task 6.2 — Arrow functions
 // Make an arrow function; const cube = n => n*n*n; cube(3)
 // write code here
 
@@ -100,16 +93,16 @@ console.log("%cJS Lab Connected — Start completing the TODOs!", "font-weight:b
 // TODO-8: SCOPE & GLOBAL OBJECT (ESSENTIALS)
 // =================================
 
-// Task 8.1 — var vs let scope
+// Task 7.1 — var vs let scope
 // Declare var a = 1; let b = 2 inside a block { },  then try displaying both outside the block; observe differences.
 // write code here
 
 
 // ==================
-// TODO-9: ARRAYS (CORE)
+// TODO-8: ARRAYS (CORE)
 // ==================
 
-// Task 9.1 — create & mutate
+// Task 98.1 — create & mutate
 // TODO: let nums = [3,1,4]; then push(1), unshift(9), pop(); log final array and length.
 // write code here
 

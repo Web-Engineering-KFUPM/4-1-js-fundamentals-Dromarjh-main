@@ -140,7 +140,7 @@ For deeper understanding, students must read the referenced **Chapter 4 topics**
 
 ## Checklist Before Submission
 - [ ] Connected `script.js` in `index.html` correctly.
-- [ ] Completed all TODO tasks in `lab.js`.
+- [ ] Completed all TODO tasks in `script.js`.
 - [ ] Used `console.log()` for outputs (no DOM code required).
 - [ ] Code runs without syntax errors.
 

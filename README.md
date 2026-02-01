@@ -123,7 +123,7 @@ const square = function(n) {
 };
 
 // arrow function
-const cube = a => a + a;
+const add = a => a + a;
 ```
 
 ### Scope & Global Object
@@ -143,6 +143,12 @@ nums.push(4);     // add at end
 nums.pop();       // remove from end
 nums.unshift(0);  // add at start
 nums.shift();     // remove from start
+
+const arr = [1, 4, 9, 16];
+const result = arr.filter(num => num % 2 === 0); // filter elements that are even
+const map1 = result.map(x => x * 2); // multiply the remaining elements with 2
+const arrSort = map1.sort(function(a, b){return a-b}); // sort the remaining elements in ascending order.
+
 ```
 
 ---

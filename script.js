@@ -84,21 +84,14 @@ console.log("2 + 3 =", 2 + 3);
 //         - "Young" if age is between 13 and 35
 //         - "Aged" if age > 35
 // write code here
-const ageInput =
-typeof prompt === "function"
-  ? prompt("Enter your age:")
-  : (process.argv[2] ?? "20");
+let age = Number(prompt("Enter your age:"));
 
-const age = Number(ageInput);
-
-if (Number.isNaN(age)) {
-console.log("Invalid age input.");
-} else if (age < 13) {
-console.log("Child");
-} else if (age <= 35) {
-console.log("Young");
+if (age < 13) {
+  console.log("Child");
+} else if (age >= 13 && age <= 35) {
+  console.log("Young");
 } else {
-console.log("Aged");
+  console.log("Aged");
 }
  
 // Task 5.2 — Switch statement
@@ -132,19 +125,18 @@ switch (day) {
 // Task 6.1 — for loop sum
 // TODO: Sum integers from 1 to 10 with a for loop; display the result of the total sum.
 // write code here
-let totalSum = 0;
+let sum = 0;
 for (let i = 1; i <= 10; i++) {
-  totalSum += i;
+  sum += i;
 }
-console.log("Sum 1..10 =", totalSum);
-
+console.log(sum); 
  
 // Task 6.2 — while loop
 // let t = 3; while(t > 0), decrement the value of the t variable in each iteration and display the result of each iteration.
 // write code here
 let t = 3;
 while (t > 0) {
-  console.log("t =", t);
+  console.log(t);   // should print: 3 then 2 then 1
   t--;
 }
  

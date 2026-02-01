@@ -130,14 +130,14 @@ let sum = 0;
 for (let i = 1; i <= 10; i++) {
   sum += i;
 }
-console.log(sum); 
+console.log(sum);  
  
 // Task 6.2 — while loop
 // let t = 3; while(t > 0), decrement the value of the t variable in each iteration and display the result of each iteration.
 // write code here
 let t = 3;
 while (t > 0) {
-  console.log(t);   // should print: 3 then 2 then 1
+  console.log(t);
   t--;
 }
  

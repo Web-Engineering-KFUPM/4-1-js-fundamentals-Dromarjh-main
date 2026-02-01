@@ -120,6 +120,13 @@ console.log("JS Lab Connected — Start completing the TODOs!");
  
 // Task 9.1 — create & mutate
 // TODO: let nums = [3,1,4]; then push(1), unshift(9), pop(); log final array and its length.
+
+// Task 9.2 - You are given the following array of numbers:
+// const scores = [45, 82, 67, 90, 38, 76, 55];
+// Perform the following tasks:
+// Use filter() to keep only scores that are 60 or higher
+// Use map() to add 5 bonus points to each remaining score
+// Use sort() to sort the scores in descending order
 // write code here
  
  

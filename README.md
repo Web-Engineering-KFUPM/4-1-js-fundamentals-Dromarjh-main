@@ -3,6 +3,29 @@
 ## Overview
 JavaScript (JS) is the programming language of the web. It makes websites dynamic and interactive. Almost every modern website uses JS to add behavior and functionality.
 
+## Instructions
+
+> **Note:**  
+> Please follow the steps strictly to gain good marks in the assignment.  
+>  
+> **Due Date:** 03 Feb, 2026, **11:59 PM**
+
+---
+
+## Reading Assignment
+Read the following **sections** from the Zybooks.
+
+- 4.1 Syntax and variables
+- 4.2 Arithmetic
+- 4.3 Conditionals
+- 4.4 More conditionals
+- 4.5 Loops
+- 4.6 Functions
+- 4.7 Scope and the global object
+- 4.8 Arrays
+
+---
+
 ## Why JS in Web Development?
 - Runs directly in the browser.
 - Allows interaction with users and HTML elements.
@@ -100,7 +123,7 @@ const square = function(n) {
 };
 
 // arrow function
-const cube = n => n * n * n;
+const cube = a => a + a;
 ```
 
 ### Scope & Global Object
@@ -130,13 +153,6 @@ In browsers, use `prompt()`:
 let name = prompt("Enter your name:");
 console.log("Hello, " + name);
 ```
-
----
-
-## Reading zyBooks
-For deeper understanding, students must read the referenced **Chapter 4 topics** in zyBooks. These concepts will appear in quizzes. Lab tasks are simplified practice; zyBooks covers details.
-
----
 
 ## Checklist Before Submission
 - [ ] Connected `script.js` in `index.html` correctly.

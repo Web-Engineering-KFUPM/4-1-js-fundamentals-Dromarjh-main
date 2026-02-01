@@ -93,6 +93,7 @@ if (age < 13) {
 } else {
   console.log("Aged");
 }
+
  
 // Task 5.2 — Switch statement
 // Create a variable let day = "Mon".

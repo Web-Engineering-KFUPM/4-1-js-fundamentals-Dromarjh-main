@@ -399,7 +399,7 @@ if (html) {
   const required = [
     { label: "Has <head> section", ok: !!hasHead },
     { label: 'Has <script src="..."> inside <head>', ok: !!hasHead && hasExternalScriptInHead(head) },
-    { label: "Student .js file exists in submission", ok: !!jsFile },
+    { label: "script .js file exists in submission", ok: !!jsFile },
     {
       label: "Linked src matches a student .js filename (flexible)",
       ok: !!hasHead && !!jsFile && jsLinkedInHeadMatchesStudentFile(head, jsFile),

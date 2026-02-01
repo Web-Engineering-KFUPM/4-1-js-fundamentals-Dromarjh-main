@@ -9,7 +9,7 @@
  *   - On/before deadline => 20/20
  *   - After deadline     => 10/20
  *
- * Deadline: 03 Feb 2026 11:59 PM (Asia/Riyadh, UTC+03:00)
+ * Deadline: 02 Feb 2026 11:59 PM (Asia/Riyadh, UTC+03:00)
  *
  * Notes:
  * - Ignores HTML comments and JS comments (so examples inside comments do NOT count).
@@ -29,7 +29,7 @@ fs.mkdirSync(FEEDBACK_DIR, { recursive: true });
    Deadline (Asia/Riyadh)
    03 Feb 2026, 11:59 PM
 -------------------------------- */
-const DEADLINE_RIYADH_ISO = "2026-02-03T23:59:00+03:00";
+const DEADLINE_RIYADH_ISO = "2026-02-02T23:59:00+03:00";
 const DEADLINE_MS = Date.parse(DEADLINE_RIYADH_ISO);
 
 // Submission marks policy

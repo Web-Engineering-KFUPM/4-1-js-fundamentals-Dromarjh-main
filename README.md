@@ -8,7 +8,7 @@ JavaScript (JS) is the programming language of the web. It makes websites dynami
 > **Note:**  
 > Please use script.js file to perform TODOs and follow the steps strictly to gain good marks in the assignment.  
 >  
-> **Due Date:** 03 Feb, 2026, **11:59 PM**
+> **Due Date:** 02 Feb, 2026, **11:59 PM**
 
 ---
 

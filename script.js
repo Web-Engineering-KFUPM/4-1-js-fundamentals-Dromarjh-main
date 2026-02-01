@@ -133,8 +133,13 @@ for (let i = 1; i <= 10; i++) {
 console.log(sum);  
  
 // Task 6.2 — while loop
-// let t = 3; while(t > 0), decrement the value of the t variable in each iteration and display the result of each iteration.
-// write code here
+// Declare let t = 3.
+// Use a while loop with condition (t > 0).
+// INSIDE the loop:
+//   1) Log the current value of t using console.log(t)
+//   2) Decrement t using t--
+// NOTE: The decrement must be inside the while loop body.
+// write your code here
 let t = 3;
 while (t > 0) {
   console.log(t);
@@ -167,7 +172,16 @@ console.log("cube(3) =", cube(3));
 // =================================
  
 // Task 8.1 — var vs let scope
-// Declare var a = 1; let b = 2 inside a block { },  then try displaying both outside the block; observe differences.
+// Declare var a = 1 and let b = 2 inside a block { }.
+// Then, OUTSIDE the block:
+//   - Log a using console.log(a)
+//   - Attempt to log b using console.log(b)
+// NOTE: console.log(b) is expected to throw a ReferenceError:
+// try {
+//    console.log("let b outside block =", b);
+//  } catch (err) {
+//    console.log("let b outside block error:", err.message);
+//  }
 // write code here
 {
     var a = 1;

@@ -518,11 +518,24 @@ if (js) {
     const hasRange10 = /(<=\s*10|<\s*11)/.test(js) && /(=\s*1|=\s*0)/.test(js);
     const hasSumUpdate = /(\btotal\b|\bsum\b)\s*(\+=|=)\s*/i.test(js) || /\+=\s*\w+/.test(js);
 
-    // 6.2 while loop with t > 0 and decrement
+    // 6.2 while loop with t > 0, log(t), and decrement INSIDE the loop body
     const hasWhile = /while\s*\(/.test(js);
     const hasTCond = /\bt\s*>\s*0\b/.test(js);
-    const hasTDec = /\bt\s*--\b/.test(js) || /\bt\s*-\=\s*1\b/.test(js) || /\bt\s*=\s*t\s*-\s*1\b/.test(js);
-    const hasLogInWhile = /while\s*\([\s\S]*?\)\s*\{[\s\S]*?console\.log\s*\(/i.test(js);
+
+    // Grab the body of: while (t > 0) { ... }
+    const whileBlockMatch = js.match(/while\s*\(\s*t\s*>\s*0\s*\)\s*\{([\s\S]*?)\}/i);
+    const whileBody = whileBlockMatch ? whileBlockMatch[1] : "";
+
+    // Decrement forms (NO trailing \b — it breaks t--)
+    const decRe = /\bt\s*--/i;
+    const decAlt1Re = /\bt\s*-\=\s*1\b/i;
+    const decAlt2Re = /\bt\s*=\s*t\s*-\s*1\b/i;
+
+    const hasTDecInside = !!whileBody && (decRe.test(whileBody) || decAlt1Re.test(whileBody) || decAlt2Re.test(whileBody));
+
+    // Log inside the while body (prefer console.log(t), but allow any log)
+    const hasLogTInside = !!whileBody && /console\.log\s*\(\s*t\s*\)/i.test(whileBody);
+    const hasAnyLogInside = !!whileBody && /console\.log\s*\(/i.test(whileBody);
 
     const required = [
       { label: "Has a for loop", ok: hasFor },
@@ -531,8 +544,8 @@ if (js) {
 
       { label: "Has a while loop", ok: hasWhile },
       { label: "While condition uses t > 0", ok: hasTCond },
-      { label: "Decrements t each iteration (t-- / t -= 1 / t = t - 1)", ok: hasTDec },
-      { label: "Logs inside the while loop (not strict)", ok: hasLogInWhile || /console\.log\s*\(\s*t\s*\)/i.test(js) },
+      { label: "Logs the current value of t inside the while loop (console.log(t))", ok: hasLogTInside || (hasAnyLogInside && /console\.log\s*\(\s*t\s*\)/i.test(js)) },
+      { label: "Decrements t inside the while loop body (t-- / t -= 1 / t = t - 1)", ok: hasTDecInside },
     ];
 
     const missing = required.filter(r => !r.ok);
@@ -570,17 +583,40 @@ if (js) {
 
   /* TODO8: Scope & global object essentials (var vs let in block) */
   {
+    // Must declare inside a block:
+    // { var a = 1; let b = 2; }
+    const blockMatch = js.match(/\{([\s\S]*?)\}/);
     const hasVarA = /\bvar\s+a\s*=\s*1\b/.test(js) || /\bvar\s+a\b/.test(js);
     const hasLetB = /\blet\s+b\s*=\s*2\b/.test(js) || /\blet\s+b\b/.test(js);
 
-    // Look for a block that contains both declarations (very light)
-    const hasBlockWithBoth = /\{[\s\S]*?\bvar\s+a\b[\s\S]*?\blet\s+b\b[\s\S]*?\}/.test(js);
+    // A block that contains both declarations (light but targeted)
+    const blockWithBothMatch = js.match(/\{[\s\S]*?\bvar\s+a\b[\s\S]*?\blet\s+b\b[\s\S]*?\}/);
+    const hasBlockWithBoth = !!blockWithBothMatch;
+
+    // Check "outside the block" by analyzing code after that block closes
+    let afterBlock = js;
+    if (blockWithBothMatch) {
+      const idx = js.indexOf(blockWithBothMatch[0]);
+      if (idx !== -1) afterBlock = js.slice(idx + blockWithBothMatch[0].length);
+    }
+
+    // Accept console.log(a) OR console.log("...", a, ...) outside the block
+    const logsAOutside = /console\.log\s*\(\s*[^)]*\ba\b[^)]*\)/.test(afterBlock);
+
+    // For b, accept either:
+    // - direct attempt: console.log(... b ...) outside the block
+    // - OR try/catch wrapper that logs b and catches ReferenceError
+    const logsBOutside = /console\.log\s*\(\s*[^)]*\bb\b[^)]*\)/.test(afterBlock);
+
+    const tryCatchB =
+      /try\s*\{[\s\S]*?console\.log\s*\([\s\S]*?\bb\b[\s\S]*?\)[\s\S]*?\}[\s\S]*?catch\s*\([\s\S]*?\)\s*\{[\s\S]*?\}/i.test(afterBlock);
 
     const required = [
-      { label: "Declares var a (inside a block)", ok: hasVarA },
-      { label: "Declares let b (inside a block)", ok: hasLetB },
+      { label: "Declares var a = 1 (inside a block)", ok: hasVarA },
+      { label: "Declares let b = 2 (inside a block)", ok: hasLetB },
       { label: "Has a block { } that contains both var a and let b (light check)", ok: hasBlockWithBoth },
-      { label: "Attempts to log a or b outside the block (not strict)", ok: /console\.log\s*\(\s*a\s*\)/.test(js) || /console\.log\s*\(\s*b\s*\)/.test(js) },
+      { label: "Logs a OUTSIDE the block (console.log with 'a' anywhere in args)", ok: logsAOutside },
+      { label: "Attempts to log b OUTSIDE the block (direct OR try/catch ReferenceError-safe)", ok: logsBOutside || tryCatchB },
     ];
 
     const missing = required.filter(r => !r.ok);
@@ -686,11 +722,10 @@ for (const r of results) {
   <br/><br/>
 
   <strong>❗ Deductions / Notes</strong>
-  ${
-    r.deductions && r.deductions.length
+  ${r.deductions && r.deductions.length
       ? "\n" + r.deductions.map(d => `- ${mdEscape(d)}`).join("\n")
       : "\n- No deductions."
-  }
+    }
 
 </details>
 `;
